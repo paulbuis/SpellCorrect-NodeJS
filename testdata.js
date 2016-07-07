@@ -192,6 +192,6 @@ const tests2 = {'forbidden': 'forbiden', 'decisions': 'deciscions descisions',
 'together': 'togehter', 'profits': 'proffits'}
 
 module.exports = {
-    "test1": test1,
-    "test2": test2
+    "tests1": tests1,
+    "tests2": tests2
 }
