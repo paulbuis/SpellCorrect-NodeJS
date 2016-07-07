@@ -49,32 +49,45 @@ function inDictionary(word) {
     return true;
 }
 
+/*
+ * not yet being used in code
+ * 
 function Candidate(word) {
     this.word = word;
     this.languageModelProbability = dictionaryProbability(word);
 }
-
+*/
 
 
 function compare(a, b) {
-    return  a.languageModelProbability < b.languageModelProbability;
+    return  dictionaryProbability(a) < dictionaryProbability(b);
 }
+
+
+const candidates = require('./candidates.js')
 
 /**
  * @param {string} word
  * @returns {string}
  */
 function correct(word) {
-    const candidatesArray = candidates(word).sort(compare);
+    const candidatesMap = candidates.candidates(word);
+    var candidatesArray = [];
+
+    for (var candidate in candidatesMap) {
+        candidatesArray.push(candidate);
+    }
+
+    candidatesArray.sort(compare);
     if (!candidatesArray) {
         console.log(word + ": no candidates");
         return word;
     }
     if (candidatesArray.length === 0) {
         console.log(word  + ": empty candidate list");
+        return word;
     }
-    return candidatesArray[0].word;
-
+    return candidatesArray[0];   
 }
 
 
@@ -114,8 +127,9 @@ function spelltest(tests) {
     return;
 }
                 
-
-
+/*
+console.log(correct("goobar"))
+*/
 const testData = require("./testData.js");
 
 
