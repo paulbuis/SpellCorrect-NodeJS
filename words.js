@@ -53,7 +53,7 @@ function getLexicon() {
 
 function getDictionary() {
     if (dictionary === null) {
-        dictionary = readDictonary();
+        dictionary = readDictionary();
     }
     return dictionary;
 }
