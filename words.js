@@ -33,7 +33,7 @@ function readDictionary() {
         if (array.length > 1) {
             let word = array[0];
             let count = array[1];
-            if (lexicon[word]) {
+            if (lexicon[word]) {  //must be defined before calling this!!!
                 dictionary[word] = parseFloat(count);
             }
         }
@@ -52,6 +52,7 @@ function getLexicon() {
 }
 
 function getDictionary() {
+    getLexicon();
     if (dictionary === null) {
         dictionary = readDictionary();
     }
